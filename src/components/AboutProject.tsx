@@ -14,7 +14,7 @@ const AboutProject = () => {
               <div className="flex items-center justify-center gap-3 mb-6">
                 <Info className="h-6 w-6 text-medical-crimson" />
                 <h2 className="text-3xl font-bold text-foreground">
-                  About This Project
+                  Daily Medical Challenge
                 </h2>
               </div>
 
