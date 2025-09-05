@@ -5,7 +5,6 @@ import { Clock, CheckCircle } from "lucide-react";
 
 const QueryOfTheDay = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [demoMode, setDemoMode] = useState<'query' | 'answer'>('query');
   
   // Example data - in a real app this would come from your backend
   const todaysQuery = {
@@ -22,33 +21,11 @@ const QueryOfTheDay = () => {
   }, []);
 
   const currentHour = currentTime.getHours();
-  const showAnswer = currentHour >= 20 || demoMode === 'answer'; // 8 PM or later or demo mode
-  const showQuery = currentHour >= 9 || demoMode === 'query'; // 9 AM or later or demo mode
+  const showAnswer = currentHour >= 20; // 8 PM or later
+  const showQuery = currentHour >= 9; // 9 AM or later
 
   return (
-    <div className="space-y-4">
-      {/* Demo Controls */}
-      <div className="bg-slate-800/90 rounded-lg p-3 flex gap-2 justify-end">
-        <span className="text-white text-sm mr-2">Demo Controls:</span>
-        <Button
-          size="sm"
-          variant={demoMode === 'query' ? 'default' : 'outline'}
-          onClick={() => setDemoMode('query')}
-          className={`text-xs h-7 ${demoMode === 'query' ? 'bg-medical-crimson hover:bg-medical-crimson-dark' : ''}`}
-        >
-          9-8PM (Query)
-        </Button>
-        <Button
-          size="sm"
-          variant={demoMode === 'answer' ? 'default' : 'outline'}
-          onClick={() => setDemoMode('answer')}
-          className={`text-xs h-7 ${demoMode === 'answer' ? 'bg-medical-crimson hover:bg-medical-crimson-dark' : ''}`}
-        >
-          8PM+ (Answer)
-        </Button>
-      </div>
-
-      <Card className="p-8 bg-white shadow-lg border-0 rounded-2xl">
+    <Card className="p-8 bg-white shadow-lg border-0 rounded-2xl">
         <div className="space-y-6">
           {/* Header with status */}
           <div className="flex items-center justify-between">
@@ -111,7 +88,6 @@ const QueryOfTheDay = () => {
           )}
         </div>
       </Card>
-    </div>
   );
 };
 
