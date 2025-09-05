@@ -59,7 +59,7 @@ const QueryOfTheDay = () => {
 
   return (
     <Card 
-      className="p-0 bg-white shadow-xl border-0 rounded-3xl overflow-hidden"
+      className="p-0 bg-white shadow-xl border-0 rounded-3xl overflow-hidden h-full"
       role="main"
       aria-labelledby="query-title"
     >
