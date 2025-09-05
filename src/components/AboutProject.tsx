@@ -1,4 +1,3 @@
-import { Info } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const AboutProject = () => {
@@ -10,13 +9,12 @@ const AboutProject = () => {
           {/* White Card Container */}
           <Card className="bg-white rounded-2xl shadow-xl p-8 border-0">
             <div className="text-center space-y-6">
-              {/* Icon and Title */}
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <Info className="h-6 w-6 text-medical-crimson" />
-                <h2 className="text-3xl font-bold text-foreground">
-                  Daily Medical Challenge
-                </h2>
-              </div>
+               {/* Title */}
+               <div className="mb-8">
+                 <h2 className="text-3xl font-bold text-foreground">
+                   Daily Medical Challenge
+                 </h2>
+               </div>
 
               {/* Body Text */}
               <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto font-inter">
