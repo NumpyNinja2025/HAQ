@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Download, Database } from "lucide-react";
+import { Download, Database, ExternalLink, Settings } from "lucide-react";
 
 const DatasetDownload = () => {
   const handleDownload = () => {
@@ -8,42 +8,58 @@ const DatasetDownload = () => {
     window.open("https://physionet.org/", "_blank");
   };
 
+  const handlePhysioNetDetails = () => {
+    window.open("https://physionet.org/about/", "_blank");
+  };
+
   return (
-    <Card className="p-8 rounded-2xl shadow-lg bg-card border-0">
-      <div className="text-center space-y-6">
-        <div className="flex justify-center">
-          <div className="p-4 bg-medical-blue-light rounded-full">
-            <Database className="h-8 w-8 text-medical-blue" />
+    <Card className="p-8 bg-white shadow-lg border-0 rounded-2xl">
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Database className="h-6 w-6 text-gray-700" />
+            <h3 className="text-xl font-semibold text-gray-900">
+              Dataset Access
+            </h3>
           </div>
         </div>
         
-        <div className="space-y-2">
-          <h3 className="text-xl font-semibold text-foreground">
-            Healthcare Dataset
-          </h3>
-          <p className="text-muted-foreground">
-            Access comprehensive medical datasets for research and analysis
-          </p>
+        <div className="space-y-4">
+          <Button 
+            onClick={handleDownload}
+            className="w-full bg-gray-800 hover:bg-gray-700 text-white font-medium py-3 flex items-center justify-center gap-2"
+          >
+            <Download className="h-4 w-4" />
+            Download Dataset (SQL)
+          </Button>
+          
+          <Button 
+            onClick={handlePhysioNetDetails}
+            variant="outline"
+            className="w-full py-3 flex items-center justify-center gap-2"
+          >
+            <ExternalLink className="h-4 w-4" />
+            PhysioNet Details
+          </Button>
         </div>
         
-        <Button 
-          onClick={handleDownload}
-          className="bg-medical-blue hover:bg-medical-blue/90 text-white font-medium px-8 py-3"
-        >
-          <Download className="h-4 w-4 mr-2" />
-          Download Dataset
-        </Button>
-        
-        <div className="mt-6 p-4 bg-muted rounded-xl">
-          <p className="text-sm text-muted-foreground font-mono">
-            <strong>Restore instructions:</strong><br />
-            pg_restore -U postgres -d mydb dataset.sql
-          </p>
+        <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+          <div className="flex items-start gap-2">
+            <Settings className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
+            <div>
+              <h4 className="font-semibold text-orange-800 mb-2">
+                🔧 Restore in pgAdmin:
+              </h4>
+              <ol className="text-sm text-orange-700 space-y-1">
+                <li>1. Open pgAdmin and connect to your server</li>
+                <li>2. Right-click on "Databases" → "Create Database"</li>
+                <li>3. Name it "medical_queries"</li>
+                <li>4. Right-click new database → "Restore"</li>
+                <li>5. Select the downloaded SQL file</li>
+              </ol>
+            </div>
+          </div>
         </div>
-        
-        <p className="text-xs text-muted-foreground">
-          📊 Datasets provided by PhysioNet - A repository of freely-available medical research data
-        </p>
       </div>
     </Card>
   );

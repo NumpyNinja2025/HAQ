@@ -1,13 +1,16 @@
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import { Clock, CheckCircle } from "lucide-react";
 
 const QueryOfTheDay = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [demoMode, setDemoMode] = useState<'query' | 'answer'>('query');
   
   // Example data - in a real app this would come from your backend
   const todaysQuery = {
-    question: "What is the normal fasting blood glucose range?",
-    answer: "70–99 mg/dL (3.9–5.5 mmol/L) is considered normal for adults"
+    question: "A 65-year-old patient presents with chest pain and elevated troponin levels. ECG shows ST-segment elevation in leads II, III, and aVF. What is the most likely location of the myocardial infarction?",
+    answer: "Inferior wall myocardial infarction. The ST-elevation in leads II, III, and aVF indicates inferior wall involvement, typically caused by occlusion of the right coronary artery (RCA) or left circumflex artery (LCX)."
   };
 
   useEffect(() => {
@@ -19,55 +22,96 @@ const QueryOfTheDay = () => {
   }, []);
 
   const currentHour = currentTime.getHours();
-  const showAnswer = currentHour >= 20; // 8 PM or later
-  const showQuery = currentHour >= 9; // 9 AM or later
+  const showAnswer = currentHour >= 20 || demoMode === 'answer'; // 8 PM or later or demo mode
+  const showQuery = currentHour >= 9 || demoMode === 'query'; // 9 AM or later or demo mode
 
   return (
-    <Card className="p-8 rounded-2xl shadow-lg bg-card border-0">
-      <div className="text-center space-y-6">
-        {showQuery ? (
-          <>
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-medical-blue">
-                Today's Medical Query
-              </h3>
-              <p className="text-xl font-medium text-foreground leading-relaxed">
-                {todaysQuery.question}
+    <div className="space-y-4">
+      {/* Demo Controls */}
+      <div className="bg-slate-800/90 rounded-lg p-3 flex gap-2 justify-end">
+        <span className="text-white text-sm mr-2">Demo Controls:</span>
+        <Button
+          size="sm"
+          variant={demoMode === 'query' ? 'default' : 'outline'}
+          onClick={() => setDemoMode('query')}
+          className="text-xs h-7"
+        >
+          9-8PM (Query)
+        </Button>
+        <Button
+          size="sm"
+          variant={demoMode === 'answer' ? 'default' : 'outline'}
+          onClick={() => setDemoMode('answer')}
+          className="text-xs h-7"
+        >
+          8PM+ (Answer)
+        </Button>
+      </div>
+
+      <Card className="p-8 bg-white shadow-lg border-0 rounded-2xl">
+        <div className="space-y-6">
+          {/* Header with status */}
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-gray-900">Query of the Day</h2>
+            <div className="flex items-center gap-2">
+              {showAnswer ? (
+                <div className="bg-gradient-to-r from-orange-400 to-orange-500 text-white px-4 py-2 rounded-full flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4" />
+                  <span className="text-sm font-medium">Answer Revealed</span>
+                  <span className="text-sm">{currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                </div>
+              ) : (
+                <div className="bg-gradient-to-r from-blue-400 to-blue-500 text-white px-4 py-2 rounded-full flex items-center gap-2">
+                  <Clock className="h-4 w-4" />
+                  <span className="text-sm font-medium">Query Active</span>
+                  <span className="text-sm">{currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                </div>
+              )}
+            </div>
+          </div>
+          
+          {showQuery ? (
+            <>
+              {/* Question */}
+              <div className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg">
+                <p className="text-lg text-gray-800 leading-relaxed">
+                  {todaysQuery.question}
+                </p>
+              </div>
+              
+              {/* Answer section */}
+              {showAnswer ? (
+                <div className="bg-green-50 border-l-4 border-green-400 p-6 rounded-r-lg">
+                  <h3 className="text-lg font-semibold text-green-800 mb-3 flex items-center gap-2">
+                    <CheckCircle className="h-5 w-5" />
+                    Answer Revealed!
+                  </h3>
+                  <p className="text-gray-800 leading-relaxed">
+                    {todaysQuery.answer}
+                  </p>
+                </div>
+              ) : (
+                <div className="bg-gray-50 border-l-4 border-gray-300 p-6 rounded-r-lg">
+                  <p className="text-gray-600 italic">
+                    The answer will appear here at 8 PM daily.
+                  </p>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="text-center py-12 bg-gray-50 rounded-lg">
+              <Clock className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+              <p className="text-gray-600 text-lg">
+                Loading today's medical query...
+              </p>
+              <p className="text-sm text-gray-500 mt-2">
+                Daily queries are available from 9 AM to 11:59 PM
               </p>
             </div>
-            
-            {showAnswer ? (
-              <div className="mt-8 p-6 bg-medical-blue-light rounded-xl">
-                <h4 className="text-lg font-semibold text-medical-blue mb-3">
-                  Answer:
-                </h4>
-                <p className="text-lg text-medical-text leading-relaxed">
-                  {todaysQuery.answer}
-                </p>
-              </div>
-            ) : (
-              <div className="mt-8 p-6 bg-muted rounded-xl">
-                <p className="text-muted-foreground italic">
-                  💡 The answer will be revealed at 8 PM
-                </p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  Current time: {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                </p>
-              </div>
-            )}
-          </>
-        ) : (
-          <div className="py-8">
-            <p className="text-muted-foreground text-lg">
-              🌅 Today's medical query will be available at 9 AM
-            </p>
-            <p className="text-sm text-muted-foreground mt-2">
-              Current time: {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-            </p>
-          </div>
-        )}
-      </div>
-    </Card>
+          )}
+        </div>
+      </Card>
+    </div>
   );
 };
 

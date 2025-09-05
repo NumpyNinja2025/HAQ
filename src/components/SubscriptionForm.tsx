@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { Mail } from "lucide-react";
 
 const SubscriptionForm = () => {
   const [email, setEmail] = useState("");
@@ -35,13 +36,13 @@ const SubscriptionForm = () => {
 
   if (isSubscribed) {
     return (
-      <Card className="p-8 rounded-2xl shadow-lg bg-card border-0 text-center">
-        <div className="space-y-4">
+      <Card className="p-8 bg-white shadow-lg border-0 rounded-2xl">
+        <div className="text-center space-y-4">
           <div className="text-4xl">✅</div>
-          <h3 className="text-xl font-semibold text-medical-blue">
+          <h3 className="text-xl font-semibold text-gray-900">
             Welcome to HAQ!
           </h3>
-          <p className="text-muted-foreground">
+          <p className="text-gray-600">
             You're all set to receive daily medical insights. Check your inbox for confirmation!
           </p>
           <Button 
@@ -57,14 +58,17 @@ const SubscriptionForm = () => {
   }
 
   return (
-    <Card className="p-8 rounded-2xl shadow-lg bg-card border-0">
-      <div className="text-center space-y-6">
-        <div className="space-y-2">
-          <h3 className="text-xl font-semibold text-foreground">
-            Get Daily Medical Insights
-          </h3>
-          <p className="text-muted-foreground">
-            Subscribe to receive curated medical queries and evidence-based answers directly in your inbox
+    <Card className="p-8 bg-white shadow-lg border-0 rounded-2xl">
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Mail className="h-6 w-6 text-gray-700" />
+            <h3 className="text-xl font-semibold text-gray-900">
+              Daily Subscription
+            </h3>
+          </div>
+          <p className="text-gray-600">
+            Get the query at 9 AM and the answer at 8 PM delivered to your inbox!
           </p>
         </div>
         
@@ -74,20 +78,16 @@ const SubscriptionForm = () => {
             placeholder="Enter your email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="text-center"
+            className="w-full"
             required
           />
           <Button 
             type="submit" 
-            className="w-full bg-medical-blue hover:bg-medical-blue/90 text-white font-medium py-3"
+            className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium py-3"
           >
-            Subscribe to Daily Queries
+            Subscribe Now
           </Button>
         </form>
-        
-        <p className="text-xs text-muted-foreground">
-          📧 No spam, unsubscribe anytime. Your privacy is our priority.
-        </p>
       </div>
     </Card>
   );

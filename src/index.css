@@ -11,13 +11,13 @@ All colors MUST be HSL.
     --background: 0 0% 100%;
     --foreground: 210 20% 15%;
 
-    --card: 0 0% 98%;
+    --card: 0 0% 100%;
     --card-foreground: 210 20% 15%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 210 20% 15%;
 
-    --primary: 213 94% 68%;
+    --primary: 259 94% 51%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 10% 95%;
@@ -26,7 +26,7 @@ All colors MUST be HSL.
     --muted: 210 10% 96%;
     --muted-foreground: 210 10% 45%;
 
-    --accent: 213 94% 68%;
+    --accent: 259 94% 51%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -34,14 +34,18 @@ All colors MUST be HSL.
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 213 94% 68%;
+    --ring: 259 94% 51%;
 
-    /* Healthcare theme colors */
-    --medical-blue: 213 94% 68%;
-    --medical-blue-light: 213 94% 85%;
-    --medical-gray: 210 10% 96%;
+    /* Medical theme colors - purple gradient style */
+    --medical-purple: 259 94% 51%;
+    --medical-purple-light: 259 94% 65%;
+    --medical-purple-dark: 259 94% 35%;
+    --medical-gradient: linear-gradient(135deg, hsl(259 94% 51%) 0%, hsl(280 94% 45%) 100%);
+    --medical-card: 0 0% 100%;
     --medical-text: 210 20% 15%;
     --medical-muted: 210 10% 45%;
+    --medical-success: 142 76% 36%;
+    --medical-warning: 48 96% 53%;
 
     --radius: 0.5rem;
 
