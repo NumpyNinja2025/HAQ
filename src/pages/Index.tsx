@@ -1,6 +1,7 @@
 import QueryOfTheDay from "@/components/QueryOfTheDay";
 import SubscriptionForm from "@/components/SubscriptionForm";
 import DatasetDownload from "@/components/DatasetDownload";
+import AboutProject from "@/components/AboutProject";
 import { Stethoscope } from "lucide-react";
 
 const Index = () => {
@@ -37,6 +38,9 @@ const Index = () => {
           </div>
         </div>
       </main>
+
+      {/* About This Project Section */}
+      <AboutProject />
     </div>
   );
 };
