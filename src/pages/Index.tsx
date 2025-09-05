@@ -11,7 +11,7 @@ const Index = () => {
         <div className="flex items-center justify-center gap-3 mb-6">
           <Stethoscope className="h-12 w-12 text-white" />
           <h1 className="text-5xl md:text-6xl font-bold text-white">
-            Daily Medical Query
+            Health care Analysis HQ (HAQ)
           </h1>
         </div>
         <p className="text-xl text-red-100 max-w-3xl mx-auto leading-relaxed">
