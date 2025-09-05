@@ -24,7 +24,7 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 md:px-6 py-8">
+      <main className="max-w-7xl mx-auto px-4 md:px-6 py-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
           {/* Left Column - Query of the Day (spans 8 columns) */}
           <div className="lg:col-span-8">
