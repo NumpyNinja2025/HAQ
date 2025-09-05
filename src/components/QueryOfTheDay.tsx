@@ -34,7 +34,7 @@ const QueryOfTheDay = () => {
           size="sm"
           variant={demoMode === 'query' ? 'default' : 'outline'}
           onClick={() => setDemoMode('query')}
-          className="text-xs h-7"
+          className={`text-xs h-7 ${demoMode === 'query' ? 'bg-medical-crimson hover:bg-medical-crimson-dark' : ''}`}
         >
           9-8PM (Query)
         </Button>
@@ -42,7 +42,7 @@ const QueryOfTheDay = () => {
           size="sm"
           variant={demoMode === 'answer' ? 'default' : 'outline'}
           onClick={() => setDemoMode('answer')}
-          className="text-xs h-7"
+          className={`text-xs h-7 ${demoMode === 'answer' ? 'bg-medical-crimson hover:bg-medical-crimson-dark' : ''}`}
         >
           8PM+ (Answer)
         </Button>
@@ -52,16 +52,16 @@ const QueryOfTheDay = () => {
         <div className="space-y-6">
           {/* Header with status */}
           <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-gray-900">Query of the Day</h2>
+            <h2 className="text-2xl font-bold text-medical-text">Query of the Day</h2>
             <div className="flex items-center gap-2">
               {showAnswer ? (
-                <div className="bg-gradient-to-r from-orange-400 to-orange-500 text-white px-4 py-2 rounded-full flex items-center gap-2">
+                <div className="bg-medical-crimson text-white px-4 py-2 rounded-full flex items-center gap-2">
                   <CheckCircle className="h-4 w-4" />
                   <span className="text-sm font-medium">Answer Revealed</span>
                   <span className="text-sm">{currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                 </div>
               ) : (
-                <div className="bg-gradient-to-r from-blue-400 to-blue-500 text-white px-4 py-2 rounded-full flex items-center gap-2">
+                <div className="bg-medical-crimson-dark text-white px-4 py-2 rounded-full flex items-center gap-2">
                   <Clock className="h-4 w-4" />
                   <span className="text-sm font-medium">Query Active</span>
                   <span className="text-sm">{currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
@@ -73,15 +73,15 @@ const QueryOfTheDay = () => {
           {showQuery ? (
             <>
               {/* Question */}
-              <div className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg">
-                <p className="text-lg text-gray-800 leading-relaxed">
+              <div className="bg-red-50 border-l-4 border-medical-crimson p-6 rounded-r-lg">
+                <p className="text-lg text-medical-text leading-relaxed">
                   {todaysQuery.question}
                 </p>
               </div>
               
               {/* Answer section */}
               {showAnswer ? (
-                <div className="bg-green-50 border-l-4 border-green-400 p-6 rounded-r-lg">
+                <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg">
                   <h3 className="text-lg font-semibold text-green-800 mb-3 flex items-center gap-2">
                     <CheckCircle className="h-5 w-5" />
                     Answer Revealed!

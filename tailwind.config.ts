@@ -53,14 +53,12 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				medical: {
-					purple: 'hsl(var(--medical-purple))',
-					'purple-light': 'hsl(var(--medical-purple-light))',
-					'purple-dark': 'hsl(var(--medical-purple-dark))',
-					card: 'hsl(var(--medical-card))',
-					text: 'hsl(var(--medical-text))',
-					muted: 'hsl(var(--medical-muted))',
-					success: 'hsl(var(--medical-success))',
-					warning: 'hsl(var(--medical-warning))'
+					crimson: 'hsl(var(--harvard-crimson))',
+					'crimson-dark': 'hsl(var(--harvard-crimson-dark))',
+					background: 'hsl(var(--harvard-background))',
+					card: 'hsl(var(--harvard-card))',
+					text: 'hsl(var(--harvard-text))',
+					muted: 'hsl(var(--harvard-muted))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',

@@ -8,25 +8,25 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 210 20% 15%;
+    --background: 240 9% 96%;
+    --foreground: 0 0% 18%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 20% 15%;
+    --card-foreground: 0 0% 18%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 20% 15%;
+    --popover-foreground: 0 0% 18%;
 
-    --primary: 259 94% 51%;
+    --primary: 350 66% 38%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 10% 95%;
-    --secondary-foreground: 210 20% 25%;
+    --secondary-foreground: 0 0% 18%;
 
     --muted: 210 10% 96%;
     --muted-foreground: 210 10% 45%;
 
-    --accent: 259 94% 51%;
+    --accent: 350 66% 38%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -34,18 +34,15 @@ All colors MUST be HSL.
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 259 94% 51%;
+    --ring: 350 66% 38%;
 
-    /* Medical theme colors - purple gradient style */
-    --medical-purple: 259 94% 51%;
-    --medical-purple-light: 259 94% 65%;
-    --medical-purple-dark: 259 94% 35%;
-    --medical-gradient: linear-gradient(135deg, hsl(259 94% 51%) 0%, hsl(280 94% 45%) 100%);
-    --medical-card: 0 0% 100%;
-    --medical-text: 210 20% 15%;
-    --medical-muted: 210 10% 45%;
-    --medical-success: 142 76% 36%;
-    --medical-warning: 48 96% 53%;
+    /* Harvard theme colors */
+    --harvard-crimson: 350 66% 38%;
+    --harvard-crimson-dark: 350 58% 33%;
+    --harvard-background: 240 9% 96%;
+    --harvard-card: 0 0% 100%;
+    --harvard-text: 0 0% 18%;
+    --harvard-muted: 210 10% 45%;
 
     --radius: 0.5rem;
 

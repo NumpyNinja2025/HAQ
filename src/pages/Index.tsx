@@ -5,16 +5,16 @@ import { Stethoscope } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800">
+    <div className="min-h-screen bg-medical-background">
       {/* Header */}
-      <header className="text-center py-16 px-4">
+      <header className="bg-medical-crimson text-white py-16 px-4">
         <div className="flex items-center justify-center gap-3 mb-6">
           <Stethoscope className="h-12 w-12 text-white" />
           <h1 className="text-5xl md:text-6xl font-bold text-white">
             Daily Medical Query
           </h1>
         </div>
-        <p className="text-xl text-purple-100 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-xl text-red-100 max-w-3xl mx-auto leading-relaxed">
           Enhance your medical knowledge with our daily curated questions from real clinical datasets. 
           Subscribe to receive queries at 9 AM and answers at 8 PM.
         </p>

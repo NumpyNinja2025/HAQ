@@ -39,10 +39,10 @@ const SubscriptionForm = () => {
       <Card className="p-8 bg-white shadow-lg border-0 rounded-2xl">
         <div className="text-center space-y-4">
           <div className="text-4xl">✅</div>
-          <h3 className="text-xl font-semibold text-gray-900">
+          <h3 className="text-xl font-semibold text-medical-text">
             Welcome to HAQ!
           </h3>
-          <p className="text-gray-600">
+          <p className="text-medical-muted">
             You're all set to receive daily medical insights. Check your inbox for confirmation!
           </p>
           <Button 
@@ -62,12 +62,12 @@ const SubscriptionForm = () => {
       <div className="space-y-6">
         <div className="text-center space-y-2">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Mail className="h-6 w-6 text-gray-700" />
-            <h3 className="text-xl font-semibold text-gray-900">
+            <Mail className="h-6 w-6 text-medical-text" />
+            <h3 className="text-xl font-semibold text-medical-text">
               Daily Subscription
             </h3>
           </div>
-          <p className="text-gray-600">
+          <p className="text-medical-muted">
             Get the query at 9 AM and the answer at 8 PM delivered to your inbox!
           </p>
         </div>
@@ -83,7 +83,7 @@ const SubscriptionForm = () => {
           />
           <Button 
             type="submit" 
-            className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium py-3"
+            className="w-full bg-medical-crimson hover:bg-medical-crimson-dark text-white font-medium py-3"
           >
             Subscribe Now
           </Button>
