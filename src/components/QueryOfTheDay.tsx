@@ -36,41 +36,45 @@ const QueryOfTheDay = () => {
 
   if (isLoading) {
     return (
-      <Card 
-        className="p-0 bg-white shadow-xl border-0 rounded-3xl overflow-hidden min-h-[400px] flex items-center justify-center"
+      <div 
+        className="p-0 bg-gradient-surface shadow-premium border-0 rounded-3xl overflow-hidden min-h-[400px] flex items-center justify-center backdrop-blur-sm"
         role="status"
         aria-label="Loading today's medical query"
       >
-        <div className="text-center space-y-6 animate-fade-in">
+        <div className="text-center space-y-8 animate-fade-in">
           <div className="relative">
-            <div className="w-16 h-16 bg-gradient-to-br from-medical-crimson/20 to-medical-crimson/30 rounded-2xl flex items-center justify-center mx-auto">
-              <Brain className="h-8 w-8 text-medical-crimson animate-pulse" />
+            <div className="w-20 h-20 bg-gradient-primary rounded-3xl flex items-center justify-center mx-auto shadow-lg">
+              <Brain className="h-10 w-10 text-white animate-pulse" />
             </div>
-            <Loader2 className="h-6 w-6 text-medical-crimson animate-spin absolute -top-1 -right-1" />
+            <div className="absolute -inset-2 bg-primary/20 rounded-3xl animate-pulse"></div>
+            <Loader2 className="h-6 w-6 text-primary animate-spin absolute -top-2 -right-2 bg-white rounded-full p-1" />
           </div>
-          <div className="space-y-2">
-            <h3 className="text-xl font-semibold text-foreground">Preparing Your Medical Challenge</h3>
-            <p className="text-muted-foreground">Curating today's clinical scenario...</p>
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold text-foreground">Preparing Your Medical Challenge</h3>
+            <p className="text-muted-foreground text-lg">Curating today's clinical scenario...</p>
           </div>
         </div>
-      </Card>
+      </div>
     );
   }
 
   return (
-    <Card 
-      className="p-0 bg-white shadow-xl border-0 rounded-3xl overflow-hidden h-full"
+    <div 
+      className="p-0 bg-gradient-surface shadow-premium border-0 rounded-3xl overflow-hidden h-full backdrop-blur-sm"
       role="main"
       aria-labelledby="query-title"
     >
       {/* Header Section */}
-      <header className="bg-gradient-to-r from-medical-crimson to-medical-crimson-dark p-6 sm:p-8">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <Brain className="h-8 w-8 text-white flex-shrink-0" />
+      <header className="bg-gradient-primary p-8 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-light/20 to-transparent"></div>
+        <div className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="p-3 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+              <Brain className="h-8 w-8 text-white flex-shrink-0" />
+            </div>
             <h1 
               id="query-title"
-              className="text-2xl sm:text-3xl font-bold text-white"
+              className="text-3xl sm:text-4xl font-bold text-white"
             >
               Query of the Day
             </h1>
@@ -106,7 +110,7 @@ const QueryOfTheDay = () => {
       </header>
       
       {/* Main Content */}
-      <main className="p-6 sm:p-8 space-y-6 sm:space-y-8">
+      <main className="p-8 sm:p-10 space-y-10">
         {showQuery ? (
           <div className={`space-y-6 sm:space-y-8 transition-all duration-500 ${contentVisible ? 'animate-fade-in opacity-100' : 'opacity-0'}`}>
             {/* Question Section */}
@@ -225,7 +229,7 @@ const QueryOfTheDay = () => {
           </section>
         )}
       </main>
-    </Card>
+    </div>
   );
 };
 
