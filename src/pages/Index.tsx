@@ -21,15 +21,15 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column - Query of the Day (spans 2 columns) */}
-          <div className="lg:col-span-2">
+      <main className="max-w-7xl mx-auto px-6 pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Left Column - Query of the Day (spans 8 columns) */}
+          <div className="lg:col-span-8">
             <QueryOfTheDay />
           </div>
 
-          {/* Right Column - Subscription & Dataset */}
-          <div className="space-y-8">
+          {/* Right Column - Subscription & Dataset (spans 4 columns) */}
+          <div className="lg:col-span-4 space-y-6">
             <SubscriptionForm />
             <DatasetDownload />
           </div>
