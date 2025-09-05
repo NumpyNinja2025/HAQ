@@ -2,72 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Premium design tokens for professional medical platform */
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
 
 @layer base {
   :root {
-    /* Base neutrals with sophisticated undertones */
-    --background: 220 8% 98%;
-    --foreground: 220 20% 12%;
+    --background: 240 9% 96%;
+    --foreground: 0 0% 18%;
 
-    /* Premium card system */
     --card: 0 0% 100%;
-    --card-foreground: 220 18% 15%;
+    --card-foreground: 0 0% 18%;
 
-    /* Popover system */
     --popover: 0 0% 100%;
-    --popover-foreground: 220 18% 15%;
+    --popover-foreground: 0 0% 18%;
 
-    /* Professional primary palette */
-    --primary: 220 75% 52%;
+    --primary: 220 65% 45%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 220 60% 65%;
-    --primary-dark: 220 85% 35%;
 
-    /* Sophisticated secondary palette */
-    --secondary: 220 12% 95%;
-    --secondary-foreground: 220 25% 25%;
+    --secondary: 220 15% 96%;
+    --secondary-foreground: 220 65% 25%;
 
-    /* Refined muted tones */
-    --muted: 220 10% 95%;
-    --muted-foreground: 220 15% 55%;
+    --muted: 220 12% 96%;
+    --muted-foreground: 220 15% 50%;
 
-    /* Elegant accent system */
-    --accent: 220 75% 52%;
+    --accent: 220 65% 45%;
     --accent-foreground: 0 0% 100%;
 
-    /* Alert system */
-    --destructive: 0 84% 60%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    /* Border and input refinements */
-    --border: 220 13% 88%;
-    --input: 220 13% 88%;
-    --ring: 220 75% 52%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 220 65% 45%;
 
-    /* Medical platform color system */
-    --medical-primary: 220 75% 52%;
-    --medical-primary-dark: 220 85% 35%;
-    --medical-primary-light: 220 60% 65%;
-    --medical-background: 220 8% 98%;
-    --medical-surface: 0 0% 100%;
-    --medical-text: 220 18% 15%;
-    --medical-text-secondary: 220 15% 55%;
-    --medical-border: 220 13% 88%;
-    
-    /* Premium gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(220 75% 52%) 0%, hsl(220 85% 35%) 100%);
-    --gradient-surface: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 8% 98%) 100%);
-    --gradient-subtle: linear-gradient(135deg, hsl(220 8% 98%) 0%, hsl(220 12% 95%) 100%);
-    
-    /* Shadows for depth */
-    --shadow-sm: 0 1px 2px 0 hsl(220 20% 12% / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(220 20% 12% / 0.1), 0 2px 4px -1px hsl(220 20% 12% / 0.06);
-    --shadow-lg: 0 10px 15px -3px hsl(220 20% 12% / 0.1), 0 4px 6px -2px hsl(220 20% 12% / 0.05);
-    --shadow-xl: 0 20px 25px -5px hsl(220 20% 12% / 0.1), 0 10px 10px -5px hsl(220 20% 12% / 0.04);
-    --shadow-premium: 0 25px 50px -12px hsl(220 75% 52% / 0.25);
+    /* Professional theme colors */
+    --harvard-crimson: 220 65% 45%;
+    --harvard-crimson-dark: 220 70% 35%;
+    --harvard-background: 220 10% 97%;
+    --harvard-card: 0 0% 100%;
+    --harvard-text: 220 25% 15%;
+    --harvard-muted: 220 15% 50%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -131,12 +108,6 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter antialiased;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-playfair;
-    font-feature-settings: "ss01", "ss02";
+    @apply bg-background text-foreground;
   }
 }
