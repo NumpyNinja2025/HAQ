@@ -17,32 +17,32 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 18%;
 
-    --primary: 350 66% 38%;
+    --primary: 220 65% 45%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 10% 95%;
-    --secondary-foreground: 0 0% 18%;
+    --secondary: 220 15% 96%;
+    --secondary-foreground: 220 65% 25%;
 
-    --muted: 210 10% 96%;
-    --muted-foreground: 210 10% 45%;
+    --muted: 220 12% 96%;
+    --muted-foreground: 220 15% 50%;
 
-    --accent: 350 66% 38%;
+    --accent: 220 65% 45%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 350 66% 38%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 220 65% 45%;
 
-    /* Harvard theme colors */
-    --harvard-crimson: 350 66% 38%;
-    --harvard-crimson-dark: 350 58% 33%;
-    --harvard-background: 240 9% 96%;
+    /* Professional theme colors */
+    --harvard-crimson: 220 65% 45%;
+    --harvard-crimson-dark: 220 70% 35%;
+    --harvard-background: 220 10% 97%;
     --harvard-card: 0 0% 100%;
-    --harvard-text: 0 0% 18%;
-    --harvard-muted: 210 10% 45%;
+    --harvard-text: 220 25% 15%;
+    --harvard-muted: 220 15% 50%;
 
     --radius: 0.5rem;
 
