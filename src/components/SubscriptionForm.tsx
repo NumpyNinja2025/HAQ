@@ -67,7 +67,7 @@ const SubscriptionForm = () => {
               Daily Subscription
             </h3>
           </div>
-          <p className="text-medical-muted">
+          <p className="text-gray-800">
             Get the query at 9 AM and the answer at 8 PM delivered to your inbox!
           </p>
         </div>
