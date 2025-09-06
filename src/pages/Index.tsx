@@ -13,19 +13,16 @@ const Index = () => {
         <div className="relative max-w-6xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-slate-800/50 px-4 py-2 rounded-full mb-8 border border-slate-700">
             <Stethoscope className="h-5 w-5 text-blue-400" />
-            <span className="text-blue-200 text-sm font-medium">Daily Med Query</span>
+            <span className="text-blue-200 text-sm font-medium">Healthcare Analysis HQ</span>
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Medical Knowledge
-            <br />
-            Daily Challenge
+            Health care Analysis HQ (HAQ)
           </h1>
           
           <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-            Elevate your clinical expertise with carefully curated daily medical queries
-            sourced from real-world datasets. Join thousands of healthcare professionals
-            enhancing their diagnostic skills.
+            Enhance your medical knowledge with our daily curated questions from real clinical datasets. 
+            Subscribe to receive queries at 9 AM and answers at 8 PM.
           </p>
         </div>
       </section>

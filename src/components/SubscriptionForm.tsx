@@ -66,7 +66,7 @@ const SubscriptionForm = () => {
             <h3 className="text-lg font-semibold text-white">Daily Delivery</h3>
           </div>
           <p className="text-slate-400 text-sm">
-            Never miss a challenge! Get queries at 9 AM and expert answers at 8 PM.
+            Get the query at 9 AM and the answer at 8 PM delivered to your inbox!
           </p>
         </div>
         
