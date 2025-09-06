@@ -37,20 +37,20 @@ const QueryOfTheDay = () => {
   if (isLoading) {
     return (
       <Card 
-        className="p-0 bg-white shadow-xl border-0 rounded-3xl overflow-hidden min-h-[400px] flex items-center justify-center"
+        className="p-0 bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden min-h-[400px] flex items-center justify-center"
         role="status"
         aria-label="Loading today's medical query"
       >
         <div className="text-center space-y-6 animate-fade-in">
           <div className="relative">
-            <div className="w-16 h-16 bg-gradient-to-br from-medical-crimson/20 to-medical-crimson/30 rounded-2xl flex items-center justify-center mx-auto">
-              <Brain className="h-8 w-8 text-medical-crimson animate-pulse" />
+            <div className="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto">
+              <Brain className="h-8 w-8 text-blue-400 animate-pulse" />
             </div>
-            <Loader2 className="h-6 w-6 text-medical-crimson animate-spin absolute -top-1 -right-1" />
+            <Loader2 className="h-6 w-6 text-blue-400 animate-spin absolute -top-1 -right-1" />
           </div>
           <div className="space-y-2">
-            <h3 className="text-xl font-semibold text-foreground">Preparing Your Medical Challenge</h3>
-            <p className="text-muted-foreground">Curating today's clinical scenario...</p>
+            <div className="h-3 bg-blue-500 rounded-full w-48 mx-auto animate-pulse"></div>
+            <p className="text-slate-400">Loading today's challenge...</p>
           </div>
         </div>
       </Card>
@@ -59,167 +59,105 @@ const QueryOfTheDay = () => {
 
   return (
     <Card 
-      className="p-0 bg-white shadow-xl border-0 rounded-3xl overflow-hidden h-full"
+      className="p-0 bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden h-full"
       role="main"
       aria-labelledby="query-title"
     >
+      {/* Progress Bar */}
+      <div className="h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-t-2xl"></div>
+      
       {/* Header Section */}
-      <header className="bg-gradient-to-r from-medical-crimson to-medical-crimson-dark p-6 sm:p-8">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <Brain className="h-8 w-8 text-white flex-shrink-0" />
-            <h1 
-              id="query-title"
-              className="text-2xl sm:text-3xl font-bold text-white"
-            >
-              Query of the Day
-            </h1>
-          </div>
-          <div 
-            className="flex items-center gap-3"
-            role="status"
-            aria-live="polite"
-          >
-            {showAnswer ? (
-              <div className="bg-white/20 backdrop-blur-sm text-white px-4 sm:px-5 py-3 rounded-2xl flex items-center gap-3 border border-white/30 transition-all duration-300 hover:bg-white/30">
-                <CheckCircle className="h-5 w-5 flex-shrink-0" aria-hidden="true" />
-                <div className="flex flex-col">
-                  <span className="text-sm font-semibold">Answer Revealed</span>
-                  <span className="text-xs opacity-90" aria-label={`Current time: ${currentTime.toLocaleTimeString()}`}>
-                    {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                  </span>
-                </div>
-              </div>
-            ) : (
-              <div className="bg-white/20 backdrop-blur-sm text-white px-4 sm:px-5 py-3 rounded-2xl flex items-center gap-3 border border-white/30 transition-all duration-300 hover:bg-white/30">
-                <Clock className="h-5 w-5 flex-shrink-0 animate-pulse" aria-hidden="true" />
-                <div className="flex flex-col">
-                  <span className="text-sm font-semibold">Query Active</span>
-                  <span className="text-xs opacity-90" aria-label={`Current time: ${currentTime.toLocaleTimeString()}`}>
-                    {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                  </span>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
+      <header className="p-6 sm:p-8">
+        <h1 
+          id="query-title"
+          className="text-2xl font-bold text-white mb-2"
+        >
+          Today's Medical Query
+        </h1>
       </header>
       
       {/* Main Content */}
-      <main className="p-6 sm:p-8 space-y-6 sm:space-y-8">
+      <main className="p-6 sm:p-8 space-y-6">
         {showQuery ? (
-          <div className={`space-y-6 sm:space-y-8 transition-all duration-500 ${contentVisible ? 'animate-fade-in opacity-100' : 'opacity-0'}`}>
+          <div className={`space-y-6 transition-all duration-500 ${contentVisible ? 'animate-fade-in opacity-100' : 'opacity-0'}`}>
+            {/* Loading State or Question */}
+            {!showAnswer && (
+              <div className="flex items-center gap-3 text-slate-400 mb-4">
+                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                <span className="text-sm">Loading your daily medical challenge...</span>
+              </div>
+            )}
+            
             {/* Question Section */}
             <section 
-              className="relative"
+              className="space-y-4"
               role="article"
               aria-labelledby="question-heading"
             >
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-medical-crimson to-medical-crimson-dark rounded-full"></div>
-              <div className="bg-gradient-to-br from-medical-crimson/5 to-medical-crimson/10 border border-medical-crimson/20 p-6 sm:p-8 rounded-2xl ml-6 hover:shadow-lg transition-all duration-300 hover-scale">
-                <div className="flex flex-col sm:flex-row sm:items-start gap-4">
-                  <div 
-                    className="flex-shrink-0 w-10 h-10 bg-medical-crimson rounded-full flex items-center justify-center text-white font-bold text-sm"
-                    role="img"
-                    aria-label="Question indicator"
-                  >
-                    Q
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h2 
-                      id="question-heading"
-                      className="text-sm font-semibold text-medical-crimson mb-3 uppercase tracking-wide"
-                    >
-                      Medical Challenge
-                    </h2>
-                    <p className="text-base sm:text-lg text-foreground leading-relaxed font-medium">
-                      {todaysQuery.question}
-                    </p>
-                  </div>
-                </div>
+              <div className="bg-slate-700/50 border border-slate-600 p-6 rounded-xl">
+                <p className="text-base text-slate-200 leading-relaxed">
+                  {todaysQuery.question}
+                </p>
               </div>
             </section>
             
             {/* Answer Section */}
             {showAnswer ? (
               <section 
-                className="relative animate-fade-in"
+                className="animate-fade-in"
                 role="article"
                 aria-labelledby="answer-heading"
               >
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-emerald-500 to-emerald-600 rounded-full"></div>
-                <div className="bg-gradient-to-br from-emerald-50 to-emerald-100/80 border border-emerald-200 p-6 sm:p-8 rounded-2xl ml-6 hover:shadow-lg transition-all duration-300 hover-scale">
-                  <div className="flex flex-col sm:flex-row sm:items-start gap-4">
-                    <div 
-                      className="flex-shrink-0 w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white"
-                      role="img"
-                      aria-label="Answer indicator"
-                    >
-                      <CheckCircle className="h-5 w-5" aria-hidden="true" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h2 
-                        id="answer-heading"
-                        className="text-sm font-semibold text-emerald-700 mb-3 uppercase tracking-wide"
-                      >
-                        Clinical Answer
-                      </h2>
-                      <p className="text-base sm:text-lg text-emerald-900 leading-relaxed font-medium">
-                        {todaysQuery.answer}
-                      </p>
-                    </div>
-                  </div>
+                <h3 
+                  id="answer-heading"
+                  className="text-lg font-semibold text-white mb-4 flex items-center gap-2"
+                >
+                  <CheckCircle className="h-5 w-5 text-green-400" />
+                  Expert Analysis & Answer
+                </h3>
+                <div className="bg-slate-700/50 border border-slate-600 p-6 rounded-xl">
+                  <p className="text-slate-200 leading-relaxed">
+                    {todaysQuery.answer}
+                  </p>
                 </div>
               </section>
             ) : (
               <section 
-                className="relative"
                 role="article"
                 aria-labelledby="waiting-heading"
               >
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-muted to-muted/60 rounded-full"></div>
-                <div className="bg-muted/30 border border-muted p-6 sm:p-8 rounded-2xl ml-6 transition-all duration-300">
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                    <div 
-                      className="flex-shrink-0 w-10 h-10 bg-muted rounded-full flex items-center justify-center"
-                      role="img"
-                      aria-label="Waiting indicator"
-                    >
-                      <Clock className="h-5 w-5 text-muted-foreground animate-pulse" aria-hidden="true" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h2 
-                        id="waiting-heading"
-                        className="text-sm font-semibold text-muted-foreground mb-2 uppercase tracking-wide"
-                      >
-                        Awaiting Solution
-                      </h2>
-                      <p className="text-gray-800">
-                        The clinical answer will be revealed at 8:00 PM daily
-                      </p>
-                    </div>
-                  </div>
+                <h3 
+                  id="waiting-heading"
+                  className="text-lg font-semibold text-white mb-4 flex items-center gap-2"
+                >
+                  <Clock className="h-5 w-5 text-slate-400 animate-pulse" />
+                  Expert Analysis & Answer
+                </h3>
+                <div className="bg-slate-700/30 border border-slate-600 p-6 rounded-xl">
+                  <p className="text-slate-400">
+                    The detailed answer and clinical explanation will be revealed here at 8:00 PM daily.
+                  </p>
                 </div>
               </section>
             )}
           </div>
         ) : (
           <section 
-            className="text-center py-12 sm:py-16 animate-fade-in"
+            className="text-center py-12 animate-fade-in"
             role="status"
             aria-live="polite"
           >
-            <div className="relative inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-medical-crimson/10 to-medical-crimson/20 rounded-3xl mb-6">
-              <Clock className="h-10 w-10 text-medical-crimson" aria-hidden="true" />
-              <div className="absolute inset-0 bg-medical-crimson/5 rounded-3xl animate-pulse"></div>
+            <div className="relative inline-flex items-center justify-center w-16 h-16 bg-slate-700/50 rounded-2xl mb-6">
+              <Clock className="h-8 w-8 text-slate-400" aria-hidden="true" />
+              <div className="absolute inset-0 bg-slate-600/20 rounded-2xl animate-pulse"></div>
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-3">
+            <h2 className="text-xl font-bold text-white mb-3">
               Preparing Today's Challenge
             </h2>
-            <p className="text-muted-foreground text-base sm:text-lg mb-2 max-w-md mx-auto">
+            <p className="text-slate-400 text-base mb-2 max-w-md mx-auto">
               Daily medical queries are available from 9:00 AM to 11:59 PM
             </p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-slate-500">
               Return at 9:00 AM for your next clinical challenge
             </p>
           </section>

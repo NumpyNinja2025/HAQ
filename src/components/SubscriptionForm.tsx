@@ -36,19 +36,19 @@ const SubscriptionForm = () => {
 
   if (isSubscribed) {
     return (
-      <Card className="p-8 bg-white shadow-lg border-0 rounded-2xl">
+      <Card className="p-6 bg-slate-800 border border-slate-700 rounded-2xl">
         <div className="text-center space-y-4">
           <div className="text-4xl">✅</div>
-          <h3 className="text-xl font-semibold text-medical-text">
+          <h3 className="text-xl font-semibold text-white">
             Welcome to HAQ!
           </h3>
-          <p className="text-medical-muted">
+          <p className="text-slate-400">
             You're all set to receive daily medical insights. Check your inbox for confirmation!
           </p>
           <Button 
             variant="outline" 
             onClick={() => setIsSubscribed(false)}
-            className="mt-4"
+            className="mt-4 border-slate-600 text-slate-300 hover:bg-slate-700"
           >
             Subscribe Another Email
           </Button>
@@ -58,34 +58,32 @@ const SubscriptionForm = () => {
   }
 
   return (
-    <Card className="p-8 bg-white shadow-lg border-0 rounded-2xl">
+    <Card className="p-6 bg-slate-800 border border-slate-700 rounded-2xl">
       <div className="space-y-6">
-        <div className="text-center space-y-2">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Mail className="h-6 w-6 text-medical-text" />
-            <h3 className="text-xl font-semibold text-medical-text">
-              Daily Subscription
-            </h3>
+        <div className="space-y-3">
+          <div className="flex items-center gap-3">
+            <Mail className="h-5 w-5 text-white" />
+            <h3 className="text-lg font-semibold text-white">Daily Delivery</h3>
           </div>
-          <p className="text-gray-800">
-            Get the query at 9 AM and the answer at 8 PM delivered to your inbox!
+          <p className="text-slate-400 text-sm">
+            Never miss a challenge! Get queries at 9 AM and expert answers at 8 PM.
           </p>
         </div>
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
             type="email"
-            placeholder="Enter your email address"
+            placeholder="your.email@hospital.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full"
+            className="w-full bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:ring-blue-500 focus:border-blue-500"
             required
           />
           <Button 
             type="submit" 
-            className="w-full bg-medical-crimson hover:bg-medical-crimson-dark text-white font-medium py-3"
+            className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-medium py-3"
           >
-            Subscribe Now
+            Start My Daily Learning
           </Button>
         </form>
       </div>
