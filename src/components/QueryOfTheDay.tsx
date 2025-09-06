@@ -1,11 +1,14 @@
 import { Card } from "@/components/ui/card";
 import { useState, useEffect } from "react";
 import { Clock, CheckCircle, Brain, Loader2 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const QueryOfTheDay = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [isLoading, setIsLoading] = useState(true);
   const [contentVisible, setContentVisible] = useState(false);
+  const [answerRevealed, setAnswerRevealed] = useState(false);
+  const { toast } = useToast();
   
   // Example data - in a real app this would come from your backend
   const todaysQuery = {
@@ -33,6 +36,25 @@ const QueryOfTheDay = () => {
   const currentHour = currentTime.getHours();
   const showAnswer = currentHour >= 20; // 8 PM or later
   const showQuery = currentHour >= 9; // 9 AM or later
+
+  // Show toast when answer is revealed
+  useEffect(() => {
+    if (showAnswer && !answerRevealed && !isLoading) {
+      setAnswerRevealed(true);
+      const timeString = currentTime.toLocaleTimeString('en-US', { 
+        hour: 'numeric', 
+        minute: '2-digit',
+        hour12: true 
+      });
+      
+      toast({
+        title: "✓ Answer Revealed",
+        description: timeString,
+        className: "bg-gradient-to-r from-pink-600 to-red-600 border-none text-white [&_*]:text-white",
+        duration: 5000,
+      });
+    }
+  }, [showAnswer, answerRevealed, isLoading, currentTime, toast]);
 
   if (isLoading) {
     return (
