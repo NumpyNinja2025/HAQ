@@ -50,7 +50,7 @@ const QueryOfTheDay = () => {
       toast({
         title: "✓ Answer Revealed",
         description: timeString,
-        className: "bg-gradient-to-r from-purple-600 to-pink-600 border-none text-white [&_*]:text-white",
+        className: "bg-gradient-to-r from-blue-500 to-purple-500 border-none text-white [&_*]:text-white",
         duration: 5000,
       });
     }
