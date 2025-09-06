@@ -29,7 +29,7 @@ const DatasetDownload = () => {
         <div className="space-y-3">
           <Button 
             onClick={handleDownload}
-            className="w-full bg-slate-700 hover:bg-slate-600 text-white font-medium py-3 border border-slate-600 flex items-center justify-center gap-2"
+            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-3 border-0 flex items-center justify-center gap-2"
           >
             <Download className="h-4 w-4" />
             Download Dataset
@@ -38,8 +38,7 @@ const DatasetDownload = () => {
           <Dialog>
             <DialogTrigger asChild>
               <Button 
-                variant="outline"
-                className="w-full py-3 flex items-center justify-center gap-2 border-slate-600 text-slate-300 hover:bg-slate-700"
+                className="w-full py-3 flex items-center justify-center gap-2 bg-slate-700 hover:bg-slate-600 border border-slate-600 text-white"
               >
                 <Settings className="h-4 w-4" />
                 Setup Guide
@@ -113,8 +112,7 @@ const DatasetDownload = () => {
 
           <Button 
             onClick={handlePhysioNetDetails}
-            variant="outline"
-            className="w-full py-3 flex items-center justify-center gap-2 border-slate-600 text-slate-300 hover:bg-slate-700"
+            className="w-full py-3 flex items-center justify-center gap-2 bg-slate-700 hover:bg-slate-600 border border-slate-600 text-white"
           >
             <ExternalLink className="h-4 w-4" />
             PhysioNet Details
