@@ -17,12 +17,12 @@ const AboutProject = () => {
                </div>
 
               {/* Body Text */}
-              <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto font-inter">
+              <p className="text-gray-800 text-lg leading-relaxed max-w-3xl mx-auto font-inter">
                 This platform provides daily medical queries sourced from clinical datasets to help healthcare professionals and students enhance their diagnostic and analytical skills.
               </p>
 
               {/* Source Line */}
-              <p className="text-muted-foreground text-base leading-relaxed pt-4 border-t border-border/20">
+              <p className="text-gray-800 text-base leading-relaxed pt-4 border-t border-border/20">
                 Data sourced from{" "}
                 <a
                   href="https://physionet.org"

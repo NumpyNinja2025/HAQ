@@ -194,7 +194,7 @@ const QueryOfTheDay = () => {
                       >
                         Awaiting Solution
                       </h2>
-                      <p className="text-muted-foreground">
+                      <p className="text-gray-800">
                         The clinical answer will be revealed at 8:00 PM daily
                       </p>
                     </div>
