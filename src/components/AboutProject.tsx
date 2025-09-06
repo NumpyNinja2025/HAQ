@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 
 const AboutProject = () => {
   return (
-    <section className="py-16 px-4">
+    <section className="py-8 px-4">
       {/* Gradient Background Container */}
       <div className="bg-gradient-to-b from-medical-crimson to-medical-crimson/70 rounded-3xl p-8">
         <div className="max-w-4xl mx-auto">
