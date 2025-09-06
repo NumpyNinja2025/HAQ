@@ -16,7 +16,7 @@ const Index = () => {
             <span className="text-blue-200 text-sm font-medium">Healthcare Analysis HQ</span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent leading-none md:leading-none">
             Health care Analysis HQ (HAQ)
           </h1>
           
