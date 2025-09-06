@@ -39,10 +39,10 @@ All colors MUST be HSL.
     /* Professional theme colors */
     --harvard-crimson: 340 75% 42%;
     --harvard-crimson-dark: 340 80% 32%;
-    --harvard-background: 220 10% 97%;
+    --harvard-background: 348 71% 38%;
     --harvard-card: 0 0% 100%;
-    --harvard-text: 220 25% 15%;
-    --harvard-muted: 220 15% 50%;
+    --harvard-text: 0 0% 100%;
+    --harvard-muted: 0 0% 85%;
 
     --radius: 0.5rem;
 
