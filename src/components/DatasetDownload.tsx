@@ -6,7 +6,7 @@ import { Download, Database, ExternalLink, Settings, Server, FolderPlus, FileTex
 const DatasetDownload = () => {
   const handleDownload = () => {
     // In a real app, this would trigger the actual download
-    window.open("https://physionet.org/", "_blank");
+    window.open("https://drive.google.com/drive/folders/1n6v82U-NkVQlD75Fs3wxArSZ1cAq2b-O?usp=sharing", "_blank");
   };
 
   const handlePhysioNetDetails = () => {

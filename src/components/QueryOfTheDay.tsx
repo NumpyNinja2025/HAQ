@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { useState, useEffect } from "react";
 import { Clock, CheckCircle, Brain, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { BASE_URL } from "@/config";
 
 const QueryOfTheDay = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -9,12 +10,34 @@ const QueryOfTheDay = () => {
   const [contentVisible, setContentVisible] = useState(false);
   const [answerRevealed, setAnswerRevealed] = useState(false);
   const { toast } = useToast();
-  
+  const [question, setQuestion] = useState(null);
+  const [answer, setAnswer] = useState(null);
   // Example data - in a real app this would come from your backend
-  const todaysQuery = {
-    question: "A 65-year-old patient presents with chest pain and elevated troponin levels. ECG shows ST-segment elevation in leads II, III, and aVF. What is the most likely location of the myocardial infarction?",
-    answer: "Inferior wall myocardial infarction. The ST-elevation in leads II, III, and aVF indicates inferior wall involvement, typically caused by occlusion of the right coronary artery (RCA) or left circumflex artery (LCX)."
+  // const todaysQuery = {
+  //   question: "A 65-year-old patient presents with chest pain and elevated troponin levels. ECG shows ST-segment elevation in leads II, III, and aVF. What is the most likely location of the myocardial infarction?",
+  //   answer: "Inferior wall myocardial infarction. The ST-elevation in leads II, III, and aVF indicates inferior wall involvement, typically caused by occlusion of the right coronary artery (RCA) or left circumflex artery (LCX)."
+  // };
+  
+  useEffect(() => {
+  const fetchQuestion = async () => {
+    const localTime = new Date().toISOString();
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    
+    //const res = await fetch('https://mite-kind-neatly.ngrok-free.app/webhook/getQuestion', {
+    const res = await fetch(`${BASE_URL}/getQuestion`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ localTime: localTime,zone: timezone })
+    });
+    
+    const data = await res.json();
+    
+    setQuestion(data.question);
+    setAnswer(data.correct_answer);
   };
+  fetchQuestion();
+}, []);
+
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -34,7 +57,7 @@ const QueryOfTheDay = () => {
   }, []);
 
   const currentHour = currentTime.getHours();
-  const showAnswer = currentHour >= 20; // 8 PM or later
+  const showAnswer = currentHour >= 19; // 8 PM or later
   const showQuery = currentHour >= 9; // 9 AM or later
 
   // Show toast when answer is revealed
@@ -55,7 +78,8 @@ const QueryOfTheDay = () => {
       });
     }
   }, [showAnswer, answerRevealed, isLoading, currentTime, toast]);
-
+  
+  
   if (isLoading) {
     return (
       <Card 
@@ -118,7 +142,7 @@ const QueryOfTheDay = () => {
             >
               <div className="bg-slate-700/50 border border-slate-600 p-6 rounded-xl">
                 <p className="text-base text-slate-200 leading-relaxed">
-                  {todaysQuery.question}
+                  {question}
                 </p>
               </div>
             </section>
@@ -139,7 +163,7 @@ const QueryOfTheDay = () => {
                 </h3>
                 <div className="bg-slate-700/50 border border-slate-600 p-6 rounded-xl">
                   <p className="text-slate-200 leading-relaxed">
-                    {todaysQuery.answer}
+                    {answer}
                   </p>
                 </div>
               </section>

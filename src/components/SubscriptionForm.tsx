@@ -4,35 +4,89 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Mail } from "lucide-react";
+import { BASE_URL } from "@/config";
 
 const SubscriptionForm = () => {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
     
-    if (!email || !/\S+@\S+\.\S+/.test(email)) {
-      toast({
-        title: "Invalid email",
-        description: "Please enter a valid email address",
-        variant: "destructive"
-      });
-      return;
-    }
+  //   if (!email || !/\S+@\S+\.\S+/.test(email)) {
+  //     toast({
+  //       title: "Invalid email",
+  //       description: "Please enter a valid email address",
+  //       variant: "destructive"
+  //     });
+  //     return;
+  //   }
 
-    // TODO: Save to Supabase when connected
-    console.log("Email subscription:", email);
+  //   // TODO: Save to Supabase when connected
+  //   console.log("Email subscription:", email);
     
+  //   setIsSubscribed(true);
+  //   toast({
+  //     title: "Successfully subscribed! 🎉",
+  //     description: "You'll receive daily medical insights in your inbox",
+  //   });
+    
+  //   setEmail("");
+  // };
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (!email || !/\S+@\S+\.\S+/.test(email)) {
+    toast({
+      title: "Invalid email",
+      description: "Please enter a valid email address",
+      variant: "destructive"
+    });
+    return;
+  }
+
+  try {
+    //const response = await fetch("https://mite-kind-neatly.ngrok-free.app/webhook/subscribe", {
+    const response = await fetch(`${BASE_URL}/subscribe`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email ,zone:Intl.DateTimeFormat().resolvedOptions().timeZone }),
+    });
+
+    
+
+    if (!response.ok) throw new Error("Failed to fetch");
+
+    const data = await response.json();
+    
+
+    if(data.success=="true"){
+    // ✅ Only mark subscribed if server accepted
     setIsSubscribed(true);
     toast({
       title: "Successfully subscribed! 🎉",
       description: "You'll receive daily medical insights in your inbox",
     });
-    
-    setEmail("");
-  };
+
+    setEmail(""); // reset field
+  }
+  else {
+    toast({
+      title: data.message,
+      description: "Try with different mail id!!",
+      variant: "destructive",
+    });
+  }
+  } catch (error) {
+    console.error("Error submitting:", error);
+    toast({
+      title: "Submission failed ❌",
+      description: "Please try again later.",
+      variant: "destructive",
+    });
+  }
+};
 
   if (isSubscribed) {
     return (
