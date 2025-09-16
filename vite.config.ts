@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => ({
     mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),
-  base: '/daily-med-query/',
+  base: '/HAQ/',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

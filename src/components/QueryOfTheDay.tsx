@@ -22,7 +22,8 @@ const QueryOfTheDay = () => {
   const fetchQuestion = async () => {
     const localTime = new Date().toISOString();
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    
+    console.log(localTime);
+    console.log(timezone);
     //const res = await fetch('https://mite-kind-neatly.ngrok-free.app/webhook/getQuestion', {
     const res = await fetch(`${BASE_URL}/getQuestion`, {
       method: 'POST',
@@ -57,8 +58,15 @@ const QueryOfTheDay = () => {
   }, []);
 
   const currentHour = currentTime.getHours();
-  const showAnswer = currentHour >= 19; // 8 PM or later
-  const showQuery = currentHour >= 9; // 9 AM or later
+  //const showAnswer = currentHour >= 20; // 8 PM or later
+  //const showQuery = currentHour >= 19; // 9 AM or later
+
+  
+// Show query from 9:00 AM until next day 8:59 AM
+  const showQuery = currentHour >= 9 || currentHour < 9;
+
+// Show answer from 8:00 PM until next day 8:59 AM
+  const showAnswer = currentHour >= 20 || currentHour < 9;
 
   // Show toast when answer is revealed
   useEffect(() => {
@@ -129,9 +137,16 @@ const QueryOfTheDay = () => {
             {/* Loading State or Question */}
             {!showAnswer && (
               <div className="flex items-center gap-3 text-slate-400 mb-4">
-                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                <span className="text-sm">Loading your daily medical challenge...</span>
+                <h3 
+                  id="answer-heading"
+                  className="text-lg font-semibold text-white mb-4 flex items-center gap-2"
+                >
+                  
+                  Question
+                </h3>
+                
               </div>
+              
             )}
             
             {/* Question Section */}
